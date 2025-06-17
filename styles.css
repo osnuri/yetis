@@ -1269,3 +1269,20 @@ body.light-mode {
     background: var(--surface-light);
     transform: scale(1.1);
 }
+
+.cart-page {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.cart-summary {
+    font-weight: bold;
+    margin-bottom: 20px;
+}

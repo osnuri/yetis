@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cart-page">
+        <h1>Sepetim</h1>
+        <ul id="cartItems" class="cart-items"></ul>
+        <div class="cart-summary">Toplam: <span id="cartTotalDisplay">₺0.00</span></div>
+        <button id="checkoutBtn">Siparişi Tamamla</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          if (window.initializeCartPage) {
+              window.initializeCartPage();
+          }
+      });
+    </script>
+</body>
+</html>
+
