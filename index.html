@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yetis Kurye - Hızlı Teslimat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-element">🛵</div>
+        <div class="floating-element">📦</div>
+        <div class="floating-element">🍕</div>
+    </div>
+
+    <!-- Delivery Driver Animation -->
+   <div class="delivery-driver">
+    <img src="f5b16513-2def-4752-8c83-6a64c1a74e1a-Picsart-BackgroundRemover.png" alt="Kurye" class="kurye-driver-img">
+</div>
+
+
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                yetis <span>KURYE</span>
+            </div>
+            
+            <div class="nav-item active">
+                <div class="nav-icon">🏠</div>
+                Ana Sayfa
+            </div>
+            
+            <div class="nav-item">
+                <div class="nav-icon">📱</div>
+                Kategoriler
+            </div>
+            
+            <div class="nav-item">
+                <div class="nav-icon">🔍</div>
+                Ara
+            </div>
+            
+            <div class="nav-item">
+                <div class="nav-icon">📋</div>
+                Siparişlerim
+            </div>
+            
+            <div class="nav-item">
+                <div class="nav-icon">🔔</div>
+                Bildirimler
+            </div>
+
+            <div class="nav-item">
+                <div class="nav-icon">👤</div>
+                Profil
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <button class="back-btn">←</button>
+                <div class="location">Aksaray</div>
+                <div class="header-right">
+    <button id="themeToggle" class="theme-toggle-btn">🌙</button>
+    <button id="cart.html" class="cart-btn">🛒</button>
+    <div class="user-avatar" id="userAvatar">👤</div>
+            </div>
+            </div>
+
+            <!-- User Profile Menu (Hidden by default) -->
+            <div class="user-menu" id="userMenu">
+                <div class="user-info">
+                    <div class="user-photo">👤</div>
+                    <div class="user-details">
+                        <div class="user-name">Mehmet Yılmaz</div>
+                        <div class="user-email">mehmet@email.com</div>
+                    </div>
+                </div>
+                <div class="user-menu-items">
+                    <div class="user-menu-item" onclick="editProfile()">
+                        <span class="menu-icon">✏️</span>
+                        <span>Profili Düzenle</span>
+                    </div>
+                    <div class="user-menu-item" onclick="viewAddresses()">
+                        <span class="menu-icon">📍</span>
+                        <span>Adreslerim</span>
+                    </div>
+                    <div class="user-menu-item" onclick="paymentMethods()">
+                        <span class="menu-icon">💳</span>
+                        <span>Ödeme Yöntemleri</span>
+                    </div>
+                    <div class="user-menu-item" onclick="settings()">
+                        <span class="menu-icon">⚙️</span>
+                        <span>Ayarlar</span>
+                    </div>
+                    <div class="user-menu-item logout" onclick="logout()">
+                        <span class="menu-icon">🚪</span>
+                        <span>Çıkış Yap</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Content Container -->
+            <div id="pageContent">
+                <!-- Ana Sayfa -->
+                <div class="page-section active" id="homePage">
+                    <!-- Hero Banner -->
+                    <div class="hero-banner">
+                        <div class="hero-title">En Yakın Kurye</div>
+                        <div class="hero-subtitle">8 dk içinde kapında!</div>
+                        <div class="delivery-time">
+                            ⚡ Süper Hızlı Teslimat
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="categories">
+                        <div class="category-item active" data-category="market">
+                            <div class="category-icon">🛒</div>
+                            <div class="category-name">Market</div>
+                        </div>
+                        <div class="category-item" data-category="food">
+                            <div class="category-icon">🍔</div>
+                            <div class="category-name">Yiyecek</div>
+                        </div>
+                        <div class="category-item" data-category="water">
+                            <div class="category-icon">💧</div>
+                            <div class="category-name">Su</div>
+                        </div>
+                        <div class="category-item" data-category="pharmacy">
+                            <div class="category-icon">💊</div>
+                            <div class="category-name">İlaç</div>
+                        </div>
+                        <div class="category-item" data-category="documents">
+                            <div class="category-icon">📄</div>
+                            <div class="category-name">Belgeler</div>
+                        </div>
+                        <div class="category-item" data-category="gifts">
+                            <div class="category-icon">🎁</div>
+                            <div class="category-name">Hediye</div>
+                        </div>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            placeholder="Ne arıyorsunuz?"
+                            id="searchInput"
+                        >
+                        <button class="search-btn">🔍</button>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="section-title">🔥 Popüler Ürünler</div>
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Market Products -->
+                        <div class="product-card market" onclick="addToCart('Coca-Cola', '30 ml', 12.50)">
+                            <div class="product-image">🥤</div>
+                            <div class="product-name">Coca-Cola</div>
+                            <div class="product-size">30 ml</div>
+                            <div class="product-price">₺12,50</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card market" onclick="addToCart('Çikolata', '55 g', 8.75)">
+                            <div class="product-image">🍫</div>
+                            <div class="product-name">Çikolata</div>
+                            <div class="product-size">55 g</div>
+                            <div class="product-price">₺8,75</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card market" onclick="addToCart('Muz', '1 kg', 15.00)">
+                            <div class="product-image">🍌</div>
+                            <div class="product-name">Muz</div>
+                            <div class="product-size">1 kg</div>
+                            <div class="product-price">₺15,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card market" onclick="addToCart('Ekmek', '1 adet', 4.50)">
+                            <div class="product-image">🍞</div>
+                            <div class="product-name">Ekmek</div>
+                            <div class="product-size">1 adet</div>
+                            <div class="product-price">₺4,50</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card market" onclick="addToCart('Süt', '1 L', 18.50)">
+                            <div class="product-image">🥛</div>
+                            <div class="product-name">Süt</div>
+                            <div class="product-size">1 L</div>
+                            <div class="product-price">₺18,50</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card market" onclick="addToCart('Yumurta', '10 adet', 35.00)">
+                            <div class="product-image">🥚</div>
+                            <div class="product-name">Yumurta</div>
+                            <div class="product-size">10 adet</div>
+                            <div class="product-price">₺35,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card market" onclick="addToCart('Peynir', '200 g', 45.00)">
+                            <div class="product-image">🧀</div>
+                            <div class="product-name">Peynir</div>
+                            <div class="product-size">200 g</div>
+                            <div class="product-price">₺45,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card market" onclick="addToCart('Domates', '1 kg', 22.50)">
+                            <div class="product-image">🍅</div>
+                            <div class="product-name">Domates</div>
+                            <div class="product-size">1 kg</div>
+                            <div class="product-price">₺22,50</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <!-- Food Products -->
+                        <div class="product-card food hidden" onclick="addToCart('Pizza', '1 adet', 85.00)">
+                            <div class="product-image">🍕</div>
+                            <div class="product-name">Pizza</div>
+                            <div class="product-size">1 adet</div>
+                            <div class="product-price">₺85,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card food hidden" onclick="addToCart('Hamburger', '1 adet', 45.00)">
+                            <div class="product-image">🍔</div>
+                            <div class="product-name">Hamburger</div>
+                            <div class="product-size">1 adet</div>
+                            <div class="product-price">₺45,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card food hidden" onclick="addToCart('Döner', '1 porsiyon', 35.00)">
+                            <div class="product-image">🌯</div>
+                            <div class="product-name">Döner</div>
+                            <div class="product-size">1 porsiyon</div>
+                            <div class="product-price">₺35,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <!-- Water Products -->
+                        <div class="product-card water hidden" onclick="addToCart('Su', '1.5 L', 3.50)">
+                            <div class="product-image">💧</div>
+                            <div class="product-name">Su</div>
+                            <div class="product-size">1.5 L</div>
+                            <div class="product-price">₺3,50</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card water hidden" onclick="addToCart('Maden Suyu', '500 ml', 4.50)">
+                            <div class="product-image">🫧</div>
+                            <div class="product-name">Maden Suyu</div>
+                            <div class="product-size">500 ml</div>
+                            <div class="product-price">₺4,50</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <!-- Pharmacy Products -->
+                        <div class="product-card pharmacy hidden" onclick="addToCart('Aspirin', '1 kutu', 25.00)">
+                            <div class="product-image">💊</div>
+                            <div class="product-name">Aspirin</div>
+                            <div class="product-size">1 kutu</div>
+                            <div class="product-price">₺25,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+
+                        <div class="product-card pharmacy hidden" onclick="addToCart('Vitamin C', '1 kutu', 35.00)">
+                            <div class="product-image">🧪</div>
+                            <div class="product-name">Vitamin C</div>
+                            <div class="product-size">1 kutu</div>
+                            <div class="product-price">₺35,00</div>
+                            <button class="add-btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kategoriler Sayfası -->
+                <div class="page-section" id="categoriesPage">
+                    <div class="page-header">
+                        <h2>📱 Kategoriler</h2>
+                        <p>İhtiyacınız olan her şey için kategorilerimizi keşfedin</p>
+                    </div>
+                    <div class="category-grid">
+                        <div class="category-large-item" data-category="market">
+                            <div class="category-large-icon">🛒</div>
+                            <div class="category-large-name">Market</div>
+                            <div class="category-description">Günlük ihtiyaçlarınız için</div>
+                        </div>
+                        <div class="category-large-item" data-category="food">
+                            <div class="category-large-icon">🍔</div>
+                            <div class="category-large-name">Yiyecek</div>
+                            <div class="category-description">Lezzetli yemekler</div>
+                        </div>
+                        <div class="category-large-item" data-category="water">
+                            <div class="category-large-icon">💧</div>
+                            <div class="category-large-name">Su</div>
+                            <div class="category-description">Su ve içecekler</div>
+                        </div>
+                        <div class="category-large-item" data-category="pharmacy">
+                            <div class="category-large-icon">💊</div>
+                            <div class="category-large-name">İlaç</div>
+                            <div class="category-description">Sağlık ürünleri</div>
+                        </div>
+                        <div class="category-large-item" data-category="documents">
+                            <div class="category-large-icon">📄</div>
+                            <div class="category-large-name">Belgeler</div>
+                            <div class="category-description">Evrak teslimatı</div>
+                        </div>
+                        <div class="category-large-item" data-category="gifts">
+                            <div class="category-large-icon">🎁</div>
+                            <div class="category-large-name">Hediye</div>
+                            <div class="category-description">Özel günler için</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arama Sayfası -->
+                <div class="page-section" id="searchPage">
+                    <div class="page-header">
+                        <h2>🔍 Arama</h2>
+                        <p>Ne arıyorsanız bulun</p>
+                    </div>
+                    <div class="advanced-search">
+                        <input type="text" class="search-input-large" placeholder="Ürün, marka veya kategori ara..." id="advancedSearchInput">
+                        <div class="search-filters">
+                            <button class="filter-btn active" data-filter="all">Tümü</button>
+                            <button class="filter-btn" data-filter="market">Market</button>
+                            <button class="filter-btn" data-filter="food">Yiyecek</button>
+                            <button class="filter-btn" data-filter="water">İçecek</button>
+                            <button class="filter-btn" data-filter="pharmacy">İlaç</button>
+                        </div>
+                    </div>
+                    <div class="search-results" id="searchResults">
+                        <div class="no-results">🔍 Arama yapmak için yukarıdaki kutucuğa yazın</div>
+                    </div>
+                </div>
+
+                <!-- Siparişlerim Sayfası -->
+                <div class="page-section" id="ordersPage">
+                    <div class="page-header">
+                        <h2>📋 Siparişlerim</h2>
+                        <p>Geçmiş siparişlerinizi görüntüleyin</p>
+                    </div>
+                    <div class="orders-container" id="ordersContainer">
+                        <div class="order-card completed">
+                            <div class="order-header">
+                                <div class="order-id">#12345</div>
+                                <div class="order-status completed">✅ Teslim Edildi</div>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item">2x Coca-Cola, 1x Ekmek</div>
+                            </div>
+                            <div class="order-footer">
+                                <div class="order-date">15 Haziran 2025, 14:30</div>
+                                <div class="order-total">₺29,50</div>
+                            </div>
+                        </div>
+
+                        <div class="order-card in-progress">
+                            <div class="order-header">
+                                <div class="order-id">#12346</div>
+                                <div class="order-status in-progress">🚚 Yolda</div>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item">1x Pizza, 1x Su</div>
+                            </div>
+                            <div class="order-footer">
+                                <div class="order-date">15 Haziran 2025, 15:45</div>
+                                <div class="order-total">₺88,50</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bildirimler Sayfası -->
+                <div class="page-section" id="notificationsPage">
+                    <div class="page-header">
+                        <h2>🔔 Bildirimler</h2>
+                        <p>Size özel haberler ve güncellemeler</p>
+                    </div>
+                    <div class="notifications-container">
+                        <div class="notification-item unread">
+                            <div class="notification-icon">🎉</div>
+                            <div class="notification-content">
+                                <div class="notification-title">Siparişiniz Teslim Edildi!</div>
+                                <div class="notification-text">#12345 numaralı siparişiniz başarıyla teslim edilmiştir.</div>
+                                <div class="notification-time">5 dakika önce</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">💰</div>
+                            <div class="notification-content">
+                                <div class="notification-title">Özel İndirim!</div>
+                                <div class="notification-text">Market alışverişlerinizde %20 indirim fırsatı!</div>
+                                <div class="notification-time">2 saat önce</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">🚚</div>
+                            <div class="notification-content">
+                                <div class="notification-title">Kuryeniz Yolda</div>
+                                <div class="notification-text">Siparişiniz 5 dakika içinde kapınızda olacak.</div>
+                                <div class="notification-time">1 gün önce</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profil Sayfası -->
+                <div class="page-section" id="profilePage">
+                    <div class="page-header">
+                        <h2>👤 Profil</h2>
+                        <p>Hesap bilgilerinizi yönetin</p>
+                    </div>
+                    <div class="profile-content">
+                        <div class="profile-card">
+                            <div class="profile-avatar-large">👤</div>
+                            <div class="profile-info">
+                                <h3>Mehmet Yılmaz</h3>
+                                <p>mehmet@email.com</p>
+                                <p>+90 555 123 45 67</p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-menu">
+                            <div class="profile-menu-item">
+                                <span class="profile-icon">📍</span>
+                                <span>Adreslerim</span>
+                                <span class="profile-arrow">›</span>
+                            </div>
+                            <div class="profile-menu-item">
+                                <span class="profile-icon">💳</span>
+                                <span>Ödeme Yöntemleri</span>
+                                <span class="profile-arrow">›</span>
+                            </div>
+                            <div class="profile-menu-item">
+                                <span class="profile-icon">⚙️</span>
+                                <span>Ayarlar</span>
+                                <span class="profile-arrow">›</span>
+                            </div>
+                            <div class="profile-menu-item">
+                                <span class="profile-icon">❓</span>
+                                <span>Yardım & Destek</span>
+                                <span class="profile-arrow">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Counter -->
+    <div class="cart-counter" id="cartCounter" onclick="showCart()">0</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
