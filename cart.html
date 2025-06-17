@@ -5,21 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sepetim</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="cart-page">
-        <h1>Sepetim</h1>
-        <ul id="cartItems" class="cart-items"></ul>
-        <div class="cart-summary">Toplam: <span id="cartTotalDisplay">₺0.00</span></div>
-        <button id="checkoutBtn">Siparişi Tamamla</button>
+    <div class="container">
+        <div class="main-content">
+            <div class="header">
+                <a href="index.html" class="back-btn">←</a>
+                <div class="location">Sepetim</div>
+                <div class="header-right">
+                    <button id="themeToggle" class="theme-toggle-btn" aria-label="Tema Degistir">🌙</button>
+                    <div class="user-avatar" id="userAvatar">👤</div>
+                </div>
+            </div>
+            <div class="cart-page">
+                <ul id="cartItems" class="cart-items"></ul>
+                <div class="cart-summary">Toplam: <span id="cartTotalDisplay">₺0.00</span></div>
+                <button id="checkoutBtn" class="checkout-btn">Siparişi Tamamla</button>
+            </div>
+            <div class="user-menu" id="userMenu">
+                <div class="user-info">
+                    <div class="user-photo">👤</div>
+                    <div class="user-details">
+                        <div class="user-name">Mehmet Yılmaz</div>
+                        <div class="user-email">mehmet@email.com</div>
+                    </div>
+                </div>
+                <div class="user-menu-items">
+                    <div class="user-menu-item" onclick="editProfile()">
+                        <span class="menu-icon">✏️</span>
+                        <span>Profili Düzenle</span>
+                    </div>
+                    <div class="user-menu-item" onclick="viewAddresses()">
+                        <span class="menu-icon">📍</span>
+                        <span>Adreslerim</span>
+                    </div>
+                    <div class="user-menu-item" onclick="paymentMethods()">
+                        <span class="menu-icon">💳</span>
+                        <span>Ödeme Yöntemleri</span>
+                    </div>
+                    <div class="user-menu-item" onclick="settings()">
+                        <span class="menu-icon">⚙️</span>
+                        <span>Ayarlar</span>
+                    </div>
+                    <div class="user-menu-item logout" onclick="logout()">
+                        <span class="menu-icon">🚪</span>
+                        <span>Çıkış Yap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="script.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-          if (window.initializeCartPage) {
-              window.initializeCartPage();
-          }
-      });
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.initializeCartPage) {
+                window.initializeCartPage();
+            }
+        });
     </script>
 </body>
 </html>

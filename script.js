@@ -25,6 +25,9 @@ let orderHistory = [
         total: 88.50
     }
 ];
+const DEBUG = false;
+function debugLog(...args){ if (DEBUG) console.log(...args); }
+
 
 function saveCartToStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -120,7 +123,7 @@ function initializeNavigation() {
                 this.style.transform = 'translateX(12px)';
             }, 150);
             
-            console.log('Navigation:', this.textContent.trim());
+            debugLog('Navigation:', this.textContent.trim());
         });
     });
 }
@@ -729,9 +732,9 @@ function addRippleStyles() {
  * Konsol mesajları
  */
 function logAppInfo() {
-    console.log('🚀 Yetis Kurye uygulaması hazır!');
-    console.log('📱 Versiyon: 1.0.0');
-    console.log('🛠️ Temel özellikler aktif');
+    debugLog('🚀 Yetis Kurye uygulaması hazır!');
+    debugLog('📱 Versiyon: 1.0.0');
+    debugLog('🛠️ Temel özellikler aktif');
 }
 
 // ===== INITIALIZATION =====
