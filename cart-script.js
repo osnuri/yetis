@@ -278,7 +278,19 @@ Siparişi onaylıyor musunuz?
     if (confirm(message)) {
         // Başarı modalını göster
         showSuccessModal();
-        
+
+        const history = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+        const newOrder = {
+            id: Math.floor(Math.random() * 90000) + 10000,
+            status: 'in-progress',
+            items: cart.map(item => `${item.quantity}x ${item.name}`).join(', '),
+            date: new Date().toLocaleString('tr-TR'),
+            total: cartTotal
+        };
+        history.unshift(newOrder);
+        localStorage.setItem('orderHistory', JSON.stringify(history));
+        localStorage.setItem('redirectToOrders', 'true');
+
         // Sepeti temizle
         cart = [];
         saveCartToStorage();

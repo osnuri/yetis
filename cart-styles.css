@@ -2,6 +2,10 @@
    CART PAGE STYLES
    ===================================== */
 
+body {
+    overflow-y: auto;
+}
+
 /* ===== CART CONTAINER ===== */
 .cart-container {
     max-width: 1200px;

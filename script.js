@@ -47,6 +47,17 @@ function loadCartFromStorage() {
     updateCartDisplay();
 }
 
+function saveOrderHistoryToStorage() {
+    localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+}
+
+function loadOrderHistoryFromStorage() {
+    const storedHistory = localStorage.getItem('orderHistory');
+    if (storedHistory) {
+        orderHistory = JSON.parse(storedHistory);
+    }
+}
+
 // ===== NAVIGATION SYSTEM =====
 
 /**
@@ -330,6 +341,7 @@ function completeOrder() {
     
     // Sipariş geçmişine ekle
     orderHistory.unshift(newOrder);
+    saveOrderHistoryToStorage();
     
     alert('🎉 Siparişiniz alındı!\n\nSipariş No: #' + newOrder.id + '\nKuryemiz yolda, 8 dakika içinde kapınızda olacak!');
     
@@ -757,6 +769,7 @@ function logAppInfo() {
 function initializeApp() {
     initializeThemeToggle();
     loadCartFromStorage();
+    loadOrderHistoryFromStorage();
     const cartBtn = document.getElementById('cartButton');
     if (cartBtn) {
         cartBtn.addEventListener('click', function () {
@@ -781,9 +794,14 @@ function initializeApp() {
     
     // Konsol mesajları
     logAppInfo();
-    
-    // Ana sayfayı göster
-    navigateToPage('home');
+
+    const redirect = localStorage.getItem('redirectToOrders');
+    if (redirect) {
+        navigateToPage('orders');
+        localStorage.removeItem('redirectToOrders');
+    } else {
+        navigateToPage('home');
+    }
 }
 
 // ===== EVENT LISTENERS =====
@@ -796,12 +814,7 @@ document.addEventListener('DOMContentLoaded', initializeApp);
 /**
  * Sayfa yenilenmeden önce uyarı göster (sepette ürün varsa)
  */
-window.addEventListener('beforeunload', function(e) {
-    if (cart.length > 0) {
-        e.preventDefault();
-        e.returnValue = 'Sepetinizde ürünler var. Sayfayı kapatmak istediğinizden emin misiniz?';
-    }
-});
+
 
 /**
  * Klavye kısayolları
