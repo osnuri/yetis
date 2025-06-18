@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim - Yetis Kurye</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cart-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-element">🛵</div>
+        <div class="floating-element">📦</div>
+        <div class="floating-element">🛒</div>
+    </div>
+
+    <div class="cart-container">
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <button class="back-to-home" onclick="window.location.href='index.html'">
+                <span class="back-icon">←</span>
+                <span>Alışverişe Devam Et</span>
+            </button>
+            <h1 class="cart-title">
+                <span class="cart-icon-large">🛒</span>
+                Sepetim
+            </h1>
+            <div class="cart-count-badge" id="cartCountBadge">0</div>
+        </div>
+
+        <!-- Cart Content -->
+        <div class="cart-content">
+            <!-- Cart Items Section -->
+            <div class="cart-items-section">
+                <div id="cartItemsContainer">
+                    <!-- Sepet boş mesajı (başlangıçta gösterilir) -->
+                    <div class="empty-cart" id="emptyCart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h3>Sepetiniz Henüz Boş</h3>
+                        <p>Hemen alışverişe başlayın ve favori ürünlerinizi sepete ekleyin!</p>
+                        <button class="start-shopping-btn" onclick="window.location.href='index.html'">
+                            Alışverişe Başla
+                        </button>
+                    </div>
+                    
+                    <!-- Sepet öğeleri buraya dinamik olarak eklenecek -->
+                </div>
+            </div>
+
+            <!-- Order Summary Section -->
+            <div class="order-summary">
+                <h2 class="summary-title">Sipariş Özeti</h2>
+                
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Ara Toplam</span>
+                        <span id="subtotal">₺0,00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Teslimat Ücreti</span>
+                        <span class="delivery-fee" id="deliveryFee">₺5,00</span>
+                    </div>
+                    
+                    <div class="promo-code-section">
+                        <input type="text" class="promo-input" placeholder="İndirim kodu" id="promoCode">
+                        <button class="promo-btn" onclick="applyPromoCode()">Uygula</button>
+                    </div>
+                    
+                    <div class="summary-divider"></div>
+                    
+                    <div class="summary-row total">
+                        <span>Toplam</span>
+                        <span id="totalAmount">₺5,00</span>
+                    </div>
+                </div>
+
+                <div class="delivery-info">
+                    <div class="delivery-icon">⚡</div>
+                    <div class="delivery-text">
+                        <strong>Süper Hızlı Teslimat</strong>
+                        <p>Siparişiniz 8-12 dakika içinde kapınızda!</p>
+                    </div>
+                </div>
+
+                <button class="checkout-btn" id="checkoutBtn" onclick="proceedToCheckout()">
+                    <span class="checkout-icon">💳</span>
+                    Siparişi Tamamla
+                </button>
+
+                <div class="payment-methods">
+                    <p>Güvenli ödeme seçenekleri:</p>
+                    <div class="payment-icons">
+                        <span class="payment-icon">💳</span>
+                        <span class="payment-icon">💵</span>
+                        <span class="payment-icon">📱</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h2>Siparişiniz Alındı!</h2>
+            <p>Kuryemiz yolda, yaklaşık 10 dakika içinde kapınızda olacak.</p>
+            <button onclick="closeSuccessModal()">Tamam</button>
+        </div>
+    </div>
+
+    <script src="cart-script.js"></script>
+</body>
+</html>
