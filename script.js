@@ -289,16 +289,23 @@ function addToCart(productName, productSize, price) {
  */
 function updateCartDisplay() {
     const cartCounter = document.getElementById('cartCounter');
-    const badge = document.getElementById('cartCounterBadge');
-    if (cartCounter && badge) {
-        badge.textContent = cartCount;
+    const counterBadge = document.getElementById('cartCounterBadge');
+    const headerBadge = document.getElementById('cartBadge');
 
+    if (counterBadge) {
+        counterBadge.textContent = cartCount;
+    }
+    if (headerBadge) {
+        headerBadge.textContent = cartCount;
+    }
+
+    if (cartCounter && counterBadge) {
         if (cartCount > 0) {
             cartCounter.classList.add('visible');
-            badge.classList.add('visible');
+            counterBadge.classList.add('visible');
         } else {
             cartCounter.classList.remove('visible');
-            badge.classList.remove('visible');
+            counterBadge.classList.remove('visible');
         }
     }
 }
