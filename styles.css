@@ -792,18 +792,18 @@ body.light-mode .profile-avatar-large svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 18px;
+    font-size: 0;
     box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
     cursor: pointer;
     transform: scale(0);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
+    overflow: hidden;
 }
 
 .cart-counter svg {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
 }
 
 .cart-counter.visible {
