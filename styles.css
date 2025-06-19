@@ -34,6 +34,10 @@ body {
     position: relative;
 }
 
+body.scrollable {
+    overflow-y: auto;
+}
+
 /* ===== SVG ICON STYLES ===== */
 svg {
     transition: all 0.3s ease;
@@ -795,6 +799,11 @@ body.light-mode .profile-avatar-large svg {
     transform: scale(0);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
+}
+
+.cart-counter svg {
+    width: 28px;
+    height: 28px;
 }
 
 .cart-counter.visible {

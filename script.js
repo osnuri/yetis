@@ -26,6 +26,21 @@ let orderHistory = [
     }
 ];
 
+function loadOrderHistoryFromStorage() {
+    const stored = localStorage.getItem('yetisCourier_orders');
+    if (stored) {
+        try {
+            orderHistory = JSON.parse(stored);
+        } catch (e) {
+            orderHistory = [];
+        }
+    }
+}
+
+function saveOrderHistoryToStorage() {
+    localStorage.setItem('yetisCourier_orders', JSON.stringify(orderHistory));
+}
+
 // Tema değiştirildiğinde SVG renkleri otomatik olarak güncellenecek
 function initializeThemeToggle() {
     const toggleBtn = document.getElementById('themeToggle');
@@ -267,9 +282,6 @@ function addToCart(productName, productSize, price) {
     // Animasyonları göster
     showSuccessAnimation();
     showAddedAnimation();
-    
-    // Bildirim göster
-    showCartNotification(productName);
 }
 
 /**
@@ -277,13 +289,16 @@ function addToCart(productName, productSize, price) {
  */
 function updateCartDisplay() {
     const cartCounter = document.getElementById('cartCounter');
-    if (cartCounter) {
-        cartCounter.textContent = cartCount;
-        
+    const badge = document.getElementById('cartCounterBadge');
+    if (cartCounter && badge) {
+        badge.textContent = cartCount;
+
         if (cartCount > 0) {
             cartCounter.classList.add('visible');
+            badge.classList.add('visible');
         } else {
             cartCounter.classList.remove('visible');
+            badge.classList.remove('visible');
         }
     }
 }
@@ -316,6 +331,13 @@ function showSuccessAnimation() {
     setTimeout(() => {
         successDiv.remove();
     }, 600);
+}
+
+/**
+ * Sepet sayfasına gider
+ */
+function goToCart() {
+    window.location.href = 'cart.html';
 }
 
 /**
@@ -359,6 +381,7 @@ function completeOrder() {
     
     // Sipariş geçmişine ekle
     orderHistory.unshift(newOrder);
+    saveOrderHistoryToStorage();
     
     alert('🎉 Siparişiniz alındı!\n\nSipariş No: #' + newOrder.id + '\nKuryemiz yolda, 8 dakika içinde kapınızda olacak!');
     
@@ -786,6 +809,7 @@ function logAppInfo() {
 function initializeApp() {
     initializeThemeToggle();
     loadCartFromStorage();
+    loadOrderHistoryFromStorage();
     const cartBtn = document.getElementById('cartButton');
     if (cartBtn) {
         cartBtn.addEventListener('click', function () {
@@ -810,9 +834,19 @@ function initializeApp() {
     
     // Konsol mesajları
     logAppInfo();
-    
-    // Ana sayfayı göster
-    navigateToPage('home');
+
+    let startPage = 'home';
+    if (window.location.hash === '#orders') {
+        startPage = 'orders';
+    }
+
+    navigateToPage(startPage);
+    const navItems = document.querySelectorAll('.nav-item');
+    if (navItems.length) {
+        navItems.forEach(nav => nav.classList.remove('active'));
+        const index = startPage === 'orders' ? 3 : 0;
+        if (navItems[index]) navItems[index].classList.add('active');
+    }
 }
 
 // ===== EVENT LISTENERS =====
