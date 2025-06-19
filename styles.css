@@ -34,6 +34,10 @@ body {
     position: relative;
 }
 
+body.scrollable {
+    overflow-y: auto;
+}
+
 /* ===== SVG ICON STYLES ===== */
 svg {
     transition: all 0.3s ease;
@@ -797,6 +801,11 @@ body.light-mode .profile-avatar-large svg {
     z-index: 1000;
 }
 
+.cart-counter svg {
+    width: 28px;
+    height: 28px;
+}
+
 .cart-counter.visible {
     transform: scale(1);
     animation: cartPulse 2s infinite;
@@ -1420,8 +1429,9 @@ body.light-mode .profile-avatar-large svg {
     background: transparent;
     border: 2px solid var(--border-color);
     border-radius: 50%;
-    padding: 8px 12px;
-    margin-left: 12px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
     cursor: pointer;
     font-size: 20px;
     color: var(--text-primary);
@@ -1435,8 +1445,9 @@ body.light-mode .profile-avatar-large svg {
     background: transparent;
     border: 2px solid var(--border-color);
     border-radius: 50%;
-    padding: 8px 12px;
-    margin-left: 12px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
     cursor: pointer;
     font-size: 20px;
     color: var(--text-primary);
