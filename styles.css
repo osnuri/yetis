@@ -34,6 +34,10 @@ body {
     position: relative;
 }
 
+body.scrollable {
+    overflow-y: auto;
+}
+
 /* ===== SVG ICON STYLES ===== */
 svg {
     transition: all 0.3s ease;
@@ -788,13 +792,18 @@ body.light-mode .profile-avatar-large svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 18px;
+    font-size: 0;
     box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
     cursor: pointer;
     transform: scale(0);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
+    overflow: hidden;
+}
+
+.cart-counter svg {
+    width: 32px;
+    height: 32px;
 }
 
 .cart-counter.visible {
@@ -1420,8 +1429,9 @@ body.light-mode .profile-avatar-large svg {
     background: transparent;
     border: 2px solid var(--border-color);
     border-radius: 50%;
-    padding: 8px 12px;
-    margin-left: 12px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
     cursor: pointer;
     font-size: 20px;
     color: var(--text-primary);
@@ -1435,8 +1445,9 @@ body.light-mode .profile-avatar-large svg {
     background: transparent;
     border: 2px solid var(--border-color);
     border-radius: 50%;
-    padding: 8px 12px;
-    margin-left: 12px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
     cursor: pointer;
     font-size: 20px;
     color: var(--text-primary);

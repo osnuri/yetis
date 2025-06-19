@@ -276,16 +276,32 @@ Siparişi onaylıyor musunuz?
     `;
     
     if (confirm(message)) {
+        const newOrder = {
+            id: Math.floor(Math.random() * 90000) + 10000,
+            status: 'in-progress',
+            items: cart.map(item => `${item.quantity}x ${item.name}`).join(', '),
+            date: new Date().toLocaleString('tr-TR'),
+            total: cartTotal
+        };
+
+        let history = [];
+        const stored = localStorage.getItem('yetisCourier_orders');
+        if (stored) {
+            try { history = JSON.parse(stored); } catch(e) { history = []; }
+        }
+        history.unshift(newOrder);
+        localStorage.setItem('yetisCourier_orders', JSON.stringify(history));
+
         // Başarı modalını göster
         showSuccessModal();
-        
+
         // Sepeti temizle
         cart = [];
         saveCartToStorage();
-        
-        // 3 saniye sonra ana sayfaya yönlendir
+
+        // 3 saniye sonra siparişlerim sayfasına yönlendir
         setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = 'index.html#orders';
         }, 3000);
     }
 }
