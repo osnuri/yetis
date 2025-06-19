@@ -25,6 +25,35 @@ let orderHistory = [
         total: 88.50
     }
 ];
+
+// Tema değiştirildiğinde SVG renkleri otomatik olarak güncellenecek
+function initializeThemeToggle() {
+    const toggleBtn = document.getElementById('themeToggle');
+    if (!toggleBtn) return;
+
+    toggleBtn.addEventListener('click', function () {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        
+        // SVG'lerin renklerini güncelle
+        updateSVGColors();
+    });
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+    }
+    
+    // Sayfa yüklendiğinde SVG renklerini güncelle
+    updateSVGColors();
+}
+
+function updateSVGColors() {
+    // Tüm SVG'ler CSS değişkenleri kullandığı için otomatik olarak güncellenecek
+    // Ekstra bir işlem gerekmiyor
+}
+
 const DEBUG = false;
 function debugLog(...args){ if (DEBUG) console.log(...args); }
 
