@@ -137,7 +137,7 @@
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                         </svg>
                     </button>
-                    <button id="cart.html" class="cart-btn" onclick="showCart()">
+                    <button id="headerCartBtn" class="cart-btn" onclick="goToCart()">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"/>
                             <circle cx="20" cy="21" r="1"/>
@@ -312,7 +312,7 @@
                     <div class="products-grid" id="productsGrid">
                         <!-- Market Products -->
                         <div class="product-card market" onclick="addToCart('Coca-Cola', '30 ml', 12.50)">
-                            <div class="product-image">🥤</div>
+                            <div class="product-image"><img src="img/coca-cola.png" alt="Coca-Cola"></div>
                             <div class="product-name">Coca-Cola</div>
                             <div class="product-size">30 ml</div>
                             <div class="product-price">₺12,50</div>
@@ -320,7 +320,7 @@
                         </div>
 
                         <div class="product-card market" onclick="addToCart('Çikolata', '55 g', 8.75)">
-                            <div class="product-image">🍫</div>
+                            <div class="product-image"><img src="img/cikolata.png" alt="Çikolata"></div>
                             <div class="product-name">Çikolata</div>
                             <div class="product-size">55 g</div>
                             <div class="product-price">₺8,75</div>
@@ -328,7 +328,7 @@
                         </div>
 
                         <div class="product-card market" onclick="addToCart('Muz', '1 kg', 15.00)">
-                            <div class="product-image">🍌</div>
+                            <div class="product-image"><img src="img/muz.png" alt="Muz"></div>
                             <div class="product-name">Muz</div>
                             <div class="product-size">1 kg</div>
                             <div class="product-price">₺15,00</div>
@@ -336,7 +336,7 @@
                         </div>
 
                         <div class="product-card market" onclick="addToCart('Ekmek', '1 adet', 4.50)">
-                            <div class="product-image">🍞</div>
+                            <div class="product-image"><img src="img/ekmek.png" alt="Ekmek"></div>
                             <div class="product-name">Ekmek</div>
                             <div class="product-size">1 adet</div>
                             <div class="product-price">₺4,50</div>
@@ -344,7 +344,7 @@
                         </div>
 
                         <div class="product-card market" onclick="addToCart('Süt', '1 L', 18.50)">
-                            <div class="product-image">🥛</div>
+                            <div class="product-image"><img src="img/sut.png" alt="Süt"></div>
                             <div class="product-name">Süt</div>
                             <div class="product-size">1 L</div>
                             <div class="product-price">₺18,50</div>
@@ -352,7 +352,7 @@
                         </div>
 
                         <div class="product-card market" onclick="addToCart('Yumurta', '10 adet', 35.00)">
-                            <div class="product-image">🥚</div>
+                            <div class="product-image"><img src="img/yumurta.png" alt="Yumurta"></div>
                             <div class="product-name">Yumurta</div>
                             <div class="product-size">10 adet</div>
                             <div class="product-price">₺35,00</div>
@@ -360,7 +360,7 @@
                         </div>
 
                         <div class="product-card market" onclick="addToCart('Peynir', '200 g', 45.00)">
-                            <div class="product-image">🧀</div>
+                            <div class="product-image"><img src="img/peynir.png" alt="Peynir"></div>
                             <div class="product-name">Peynir</div>
                             <div class="product-size">200 g</div>
                             <div class="product-price">₺45,00</div>
@@ -368,12 +368,13 @@
                         </div>
 
                         <div class="product-card market" onclick="addToCart('Domates', '1 kg', 22.50)">
-                            <div class="product-image">🍅</div>
+                            <div class="product-image"><img src="img/domates.png" alt="Domates"></div>
                             <div class="product-name">Domates</div>
                             <div class="product-size">1 kg</div>
                             <div class="product-price">₺22,50</div>
                             <button class="add-btn">Sepete Ekle</button>
                         </div>
+
 
                         <!-- Food Products -->
                         <div class="product-card food hidden" onclick="addToCart('Pizza', '1 adet', 85.00)">

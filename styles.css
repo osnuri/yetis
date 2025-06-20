@@ -724,9 +724,20 @@ body.light-mode .profile-avatar-large svg {
 }
 
 .product-image {
-    font-size: 56px;
+    width: 80px;
+    height: 140px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 16px;
     transition: transform 0.3s ease;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .product-card:hover .product-image {
@@ -804,6 +815,9 @@ body.light-mode .profile-avatar-large svg {
 .cart-counter svg {
     width: 28px;
     height: 28px;
+    display: block;
+    margin: auto;
+    transform: translateY(15px); /* 🔧 Ayarı buradan yapıyoruz */
 }
 
 .cart-counter.visible {
