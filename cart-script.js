@@ -67,7 +67,7 @@ function renderCart() {
             const itemTotal = item.price * item.quantity;
             cartHTML += `
                 <div class="cart-item" data-index="${index}">
-                    <div class="item-image">${getProductEmoji(item.name)}</div>
+                    <div class="item-image">${getProductVisual(item.name)}</div>
                     <div class="item-details">
                         <div class="item-name">${item.name}</div>
                         <div class="item-size">${item.size}</div>
@@ -98,9 +98,20 @@ function renderCart() {
 }
 
 /**
- * Ürün emojisini döndür
+ * Ürün görselini veya emojisini döndür
  */
-function getProductEmoji(productName) {
+function getProductVisual(productName) {
+    const imageMap = {
+        'Coca-Cola': 'img/coca-cola.png',
+        'Çikolata': 'img/cikolata.png',
+        'Muz': 'img/muz.png',
+        'Ekmek': 'img/ekmek.png',
+        'Süt': 'img/sut.png',
+        'Yumurta': 'img/yumurta.png',
+        'Peynir': 'img/peynir.png',
+        'Domates': 'img/domates.png'
+    };
+
     const emojiMap = {
         'Coca-Cola': '🥤',
         'Çikolata': '🍫',
@@ -118,7 +129,11 @@ function getProductEmoji(productName) {
         'Aspirin': '💊',
         'Vitamin C': '🧪'
     };
-    
+
+    if (imageMap[productName]) {
+        return `<img src="${imageMap[productName]}" alt="${productName}">`;
+    }
+
     return emojiMap[productName] || '📦';
 }
 
